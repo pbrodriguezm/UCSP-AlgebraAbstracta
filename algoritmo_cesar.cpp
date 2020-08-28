@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+/**
+ * Patrick Rodriguez Marquez
+*/
 
 using namespace std;
 
@@ -19,6 +22,7 @@ public:
     void setMensaje(string m_mensaje);
     void setClave(int m_clave);
     string Cifrar();
+    string Cifrar_dos();
 };
 
 
@@ -35,6 +39,9 @@ public:
         clave= m_clave;
     }
 
+/**
+ * Cifrafo de Cesar recorriendo alfabeto con doble for
+*/
     string Emisor::Cifrar(){
         string text;
 
@@ -63,27 +70,34 @@ public:
     }
 
 
+/**
+ * Cifrafo de Cesar pero con char sumando valores a su numeraciópn ascii
+*/
+    string Emisor::Cifrar_dos(){
+        string text;
+        for (size_t i = 0; i < mensaje.size(); i++)
+        {
+            char crip;
+            if(mensaje[i]+clave > 'z'){     
+                crip= (mensaje[i]+ clave) - alfabeto.size();
+            }else {
+                 crip= mensaje[i]+clave;
+            }
+           text +=crip;
+        }
+        return text;       
+    }
+
+
 
 int main()
 {
-    
-   /* 
-    char c1,c2;
-    c1 = 'a';
-    c2 = 97;
-    if(c1==c2) 
-    {
-        std::cout << " iguales "<< std::endl;
-    } else     {
-        cout<<"distintos";
-    }*/
-
     Emisor a;
-    string mensaje; cout<<"Encriptación \n Mensaje: "; cin>> mensaje;
-    int  clave; cout<<"clave(#): "; cin>> clave;
+    string mensaje; cout<<"Encriptación \n** Mensaje: "; cin>> mensaje;
+    int  clave; cout<<"** clave(#): "; cin>> clave;
     a.setMensaje(mensaje);
     a.setClave(clave);
-    std::cout<<"Encriptado: " << a.Cifrar() << std::endl;
-
+    std::cout<<"** Encriptado: " << a.Cifrar() << std::endl;
+    std::cout<<"** Encriptado 2: " << a.Cifrar_dos() << std::endl;
     cout << endl;
 }
