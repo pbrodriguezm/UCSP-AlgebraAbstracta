@@ -18,6 +18,7 @@ class Receptor {
     void setMensaje(string m_mensaje);
     void setClave(int m_clave);
     string Decifrar();
+    string Decifrar_dos();
 };
 
     Receptor::Receptor(){
@@ -48,6 +49,25 @@ class Receptor {
         return text;       
     }
 
+
+    string Receptor::Decifrar_dos(){          
+        string text;
+
+            for (size_t i = 0; i < mensaje.size(); i++)
+            {
+                    int pos=alfabeto.find(mensaje[i]);                 
+                    if(pos- clave<0) {
+                        int sobrante= (pos+ clave) - alfabeto.size();
+                        text+=alfabeto[sobrante];
+                    }else {                      
+                        text+=alfabeto[pos+ clave];
+                    }                
+                
+            }
+            
+            return text;       
+
+        }
 
 
 
@@ -135,7 +155,7 @@ public:
  * Cifrafo de Cesar Strings
 */
     string Emisor::Cifrar_tres(){          
-  string text;
+    string text;
 
         for (size_t i = 0; i < mensaje.size(); i++)
         {
