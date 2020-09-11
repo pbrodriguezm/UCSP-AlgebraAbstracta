@@ -62,6 +62,7 @@ public:
     void setClave(int m_clave);
     string Cifrar();
     string Cifrar_dos();
+    string Cifrar_tres();
 };
 
 
@@ -129,6 +130,30 @@ public:
 
 
 
+
+/**
+ * Cifrafo de Cesar Strings
+*/
+    string Emisor::Cifrar_tres(){          
+  string text;
+
+        for (size_t i = 0; i < mensaje.size(); i++)
+        {
+                int pos=alfabeto.find(mensaje[i]);                 
+                  if(pos>alfabeto.size()-1) {
+                     int sobrante= (pos+ clave) - alfabeto.size();
+                      text+=alfabeto[sobrante];
+                  }else {                      
+                      text+=alfabeto[pos+ clave];
+                  }                
+              
+        }
+        
+        return text;       
+
+    }
+
+
 int main()
 {
     Emisor a;
@@ -136,14 +161,21 @@ int main()
     int  clave; cout<<"** clave(#): "; cin>> clave;
     a.setMensaje(mensaje);
     a.setClave(clave);
-    //std::cout<<"** Encriptado: " << a.Cifrar() << std::endl;
-    string mensaje_escriptado = a.Cifrar_dos();
-    cout << endl;
+    
+    string mensaje_escriptado = a.Cifrar_tres();  cout << endl;
+    
+
+
     std::cout<<"** Encriptado: " << mensaje_escriptado<< std::endl;   
+    
+    
+    
     Receptor b;
     b.setMensaje(mensaje_escriptado);
     b.setClave(clave);
     string mensaje_desencriptado = b.Decifrar();
+
+    
     std::cout<<"** Desencriptado: " << mensaje_desencriptado<< std::endl;
 
 
