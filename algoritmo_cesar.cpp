@@ -9,8 +9,47 @@ using namespace std;
 
 
 class Receptor {
+    public:
+    int clave;
+    string mensaje;
+    string alfabeto;
 
+    Receptor();
+    void setMensaje(string m_mensaje);
+    void setClave(int m_clave);
+    string Decifrar();
 };
+
+    Receptor::Receptor(){
+        alfabeto= "abcdefghijklmnopqrstuvwxyz";
+    }
+
+    void Receptor::setMensaje(string m_mensaje){        //Mensaje escriptado
+            mensaje= m_mensaje;
+            
+    }
+
+    void Receptor::setClave(int m_clave){
+        clave= m_clave;
+    }
+
+    string Receptor::Decifrar(){
+        string text;
+        for (size_t i = 0; i < mensaje.size(); i++)
+        {
+            char crip;
+            if(mensaje[i]-clave < 'a'){     
+                crip= (mensaje[i]- clave) + alfabeto.size();
+            }else {
+                 crip= mensaje[i]-clave;
+            }
+           text +=crip;
+        }
+        return text;       
+    }
+
+
+
 
 class Emisor {
 public:
@@ -97,7 +136,20 @@ int main()
     int  clave; cout<<"** clave(#): "; cin>> clave;
     a.setMensaje(mensaje);
     a.setClave(clave);
-    std::cout<<"** Encriptado: " << a.Cifrar() << std::endl;
-    std::cout<<"** Encriptado 2: " << a.Cifrar_dos() << std::endl;
+    //std::cout<<"** Encriptado: " << a.Cifrar() << std::endl;
+    string mensaje_escriptado = a.Cifrar_dos();
     cout << endl;
+    std::cout<<"** Encriptado: " << mensaje_escriptado<< std::endl;   
+    Receptor b;
+    b.setMensaje(mensaje_escriptado);
+    b.setClave(clave);
+    string mensaje_desencriptado = b.Decifrar();
+    std::cout<<"** Desencriptado: " << mensaje_desencriptado<< std::endl;
+
+
+
+
 }
+
+//receptor recibe:
+//mensaje cifrado
