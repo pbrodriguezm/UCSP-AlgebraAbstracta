@@ -140,9 +140,9 @@ public:
         for (size_t i = 0; i < mensaje.size(); i++)
         {
                 int pos=alfabeto.find(mensaje[i]);                 
-                  if(pos>alfabeto.size()-1) {
+                  if(pos+ clave>alfabeto.size()-1) {
                      int sobrante= (pos+ clave) - alfabeto.size();
-                      text+=alfabeto[sobrante];
+                     text+=alfabeto[sobrante];
                   }else {                      
                       text+=alfabeto[pos+ clave];
                   }                
@@ -175,7 +175,7 @@ int main()
     b.setClave(clave);
     string mensaje_desencriptado = b.Decifrar();
 
-    
+
     std::cout<<"** Desencriptado: " << mensaje_desencriptado<< std::endl;
 
 
