@@ -5,6 +5,30 @@
 
 using namespace std;
 
+
+
+//COMO SACAR EL MDC EN MODO BASICO
+int mcd(int a, int b){
+    
+    int max = a;
+    int min = b;
+    int res;
+    if(b>a){
+        max=b;
+    }
+
+    while(b != 0 ){
+        res=b;
+        b=a%b;
+        a=res;
+    }
+
+    return res;
+}
+
+
+
+
 void imprimir(vector<int> a)
 {
 	for(int i=0;i<a.size();i++)
@@ -13,7 +37,7 @@ void imprimir(vector<int> a)
 }
 
 
-
+//EUCLIDES EXNTENDIDO
 vector<int> eulidesExtendido(int a, int b)
 {
 	int d=0,q=0,r=0;
@@ -33,25 +57,25 @@ vector<int> eulidesExtendido(int a, int b)
 	}
 	x2=1; x1=0; y2=0 ; y1=1;
     int i=0;
-    cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<x1<<" & "<<x2<<" & "<<y<<" & "<<y1<<" & "<<y2<<endl;
+   // cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<x1<<" & "<<x2<<" & "<<y<<" & "<<y1<<" & "<<y2<<endl;
 	while(b>0)
 	{
 		q=a/b; r=a-(q*b); x=x2-(q*x1); y=y2-(q*y1);		
 		a=b; b=r; x2=x1; x1=x; y2=y1; y1=y;
         i++;
-        cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<x1<<" & "<<x2<<" & "<<y<<" & "<<y1<<" & "<<y2<<endl;
-        cout<<"----------------------------------------------------------"<<endl;
+        //cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<x1<<" & "<<x2<<" & "<<y<<" & "<<y1<<" & "<<y2<<endl;
+        //cout<<"----------------------------------------------------------"<<endl;
 	}
 	d=a; x=x2; y=y2;
 	rpta.push_back(d);
 	rpta.push_back(x);
 	rpta.push_back(y);
-    cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<x1<<" & "<<x2<<" & "<<y<<" & "<<y1<<" & "<<y2<<endl;
-    cout<<"i: "<<i<<endl;
+  //  cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<x1<<" & "<<x2<<" & "<<y<<" & "<<y1<<" & "<<y2<<endl;
+    //cout<<"i: "<<i<<endl;
 	return rpta;
 }
 
 int main () {
-    imprimir(eulidesExtendido(255,111));
+    imprimir(eulidesExtendido(9,2));
     return 0;
 }
