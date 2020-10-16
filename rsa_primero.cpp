@@ -20,7 +20,7 @@ class Rsa
     public:
         Rsa(long long);
 
-        vector<long long> euclidesBinaExtendido(long long, long long);
+        vector<long long> euclidesExtendido(long long, long long);
 
         
         void generarPyQ();         
@@ -71,7 +71,7 @@ class Rsa
 Rsa::Rsa(long long tam)
 {
    
-    abc="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?¿!¡.,;()[]áéíóú";
+    abc="abcdefghijklmnopqrstuvwxyz().0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ,+-";
     tamanyoAbc=abc.size(); 
 }
 
@@ -90,7 +90,7 @@ void Rsa::imprimirVstring(vector<long long> vec)
 
 
 
-vector<long long> Rsa::euclidesBinaExtendido(long long x, long long y)
+vector<long long> Rsa::euclidesExtendido(long long x, long long y)
 {
     long long g=1;
     while((x%2==0)&&(y%2)==0)
@@ -205,7 +205,7 @@ void Rsa::generarE()
 
 long long Rsa::aleatoria_afin(long long a,long long b)
 {
-    vector<long long> aaa=euclidesBinaExtendido(a,b);
+    vector<long long> aaa=euclidesExtendido(a,b);
     if(aaa[0]<0)
         return aaa[0]+b;
     return aaa[0];
