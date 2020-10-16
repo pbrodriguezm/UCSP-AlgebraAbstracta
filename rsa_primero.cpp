@@ -20,7 +20,6 @@ class Rsa
     public:
         Rsa(long long);
 
-        long long euclidesBina(long long, long long);
         vector<long long> euclidesBinaExtendido(long long, long long);
 
         
@@ -41,12 +40,12 @@ class Rsa
         long long convertirAint(string);
         void imprimirVector(vector<long long>);
         void imprimirVstring(vector<long long> );
-        string esMenorAlTamanyo(string );
+        
         
         
         vector<long long> transformarPalabra(string, long long,long long,long long);
 
-        void llenarVectorBinario( long long);
+        
         long long expo_mod( long long, long long, long long);        
         
         void encriptar(long long,long long,string,char*);
@@ -238,16 +237,6 @@ void Rsa::generar()
 }
 
 
-void Rsa::llenarVectorBinario( long long exp)
-{
-    vectorBinari.erase(vectorBinari.begin(),vectorBinari.end());
-    while(exp>=1)
-    {
-        vectorBinari.push_back(exp%2);
-        exp=exp>>1;
-    }        
-}
-
 
 
 long long Rsa::expo_mod( long long base, long long exp, long long mod)
@@ -279,19 +268,6 @@ long long Rsa::convertirAint(string a)
 {
     long long rpta=atoi(a.c_str());
     return rpta;
-}
-
-string Rsa::esMenorAlTamanyo(string a)
-{
-    int tam=a.size();    
-    string newN=convertirString(n);
-    
-    while(tam<newN.size())
-    {
-        a=("0"+a);
-        tam++;
-    }
-    return a;
 }
 
 
@@ -344,10 +320,10 @@ void Rsa::encriptar(long long e_, long long n_,string texto,char* texto2)
     
     for(int i=0;i<vecNumsFinal.size();i++)
     {
-        //llenarVectorBinario(e);
+        
         cout<<">>"<<vecNumsFinal[i]<<endl;
         vCasiEncriptado.push_back(expo_mod(vecNumsFinal[i],e_,n_));
-        //cout<<
+        
 
     }
     imprimirVector(vCasiEncriptado);cout<<endl;
@@ -382,9 +358,9 @@ string Rsa::desencriptar(string texto,char *file2)
 
     for(int i=0;i<vecNumsFinal.size();i++)
     {
-        //llenarVectorBinario(e);
+        
         vCasiEncriptado.push_back(expo_mod(vecNumsFinal[i],d,n));
-        //cout<<
+        
 
     }
     imprimirVstring(vCasiEncriptado);cout<<endl;
