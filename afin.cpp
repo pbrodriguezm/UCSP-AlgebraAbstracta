@@ -36,14 +36,14 @@ int resto(int a, int n)
 
         int q = a/n;
         int r = a%n;
-      //  cout<<a<<"=("<<q<<"x"<<n<<")+("<<r<<") \n";
+        //cout<<a<<"=("<<q<<"x"<<n<<")+("<<r<<") \n";
 
         if(r<0){
             r=n+r;
             q=q+1;
         }
 
-      //  cout<<a<<"=("<<q<<"x"<<n<<")+("<<r<<")\n";
+        cout<<a<<"=("<<q<<"x"<<n<<")+("<<r<<")\n";
 
             
         return r;
@@ -70,16 +70,17 @@ int eulidesExtendido(int a, int b)
 	}
 	x2=1; x1=0; y2=0 ; y1=1;
     int i=0;
-   // cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<x1<<" & "<<x2<<" & "<<y<<" & "<<y1<<" & "<<y2<<endl;
+    cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<y<<endl;
 	while(b>0)
 	{
 		q=a/b; r=a-(q*b); x=x2-(q*x1); y=y2-(q*y1);		
 		a=b; b=r; x2=x1; x1=x; y2=y1; y1=y;
         i++;
-        //cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<x1<<" & "<<x2<<" & "<<y<<" & "<<y1<<" & "<<y2<<endl;
+        cout<<a<<" & "<<b<<" & "<<d<<" & "<<q<<" & "<<r<<" & "<<x<<" & "<<y<<endl;
         //cout<<"----------------------------------------------------------"<<endl;
 	}
 	d=a; x=x2; y=y2;
+    cout<<d<<" "<<x<<" "<<y<<endl;
 
 	return x;
 
@@ -140,7 +141,7 @@ class Receptor {
             for (size_t i = 0; i < mensaje.size(); i++)
             {
                     int pos=alfabeto.find(mensaje[i]);     
-                                
+                           cout<<"Pos11: "<<pos<<endl;
                     inversa = eulidesExtendido(clave_a,alfabeto.size());
                     //if(inversa<0) //modulo
                      int valortmp= inversa*(pos-clave_b);
@@ -239,7 +240,7 @@ public:
 
 int main()
 {
-    Emisor a;
+    /*Emisor a;
     string mensaje; cout<<"INICIANDO Encriptación \n** Mensaje: "; cin>> mensaje;
 
     
@@ -256,10 +257,10 @@ int main()
     std::cout<<"** Encriptado: " << mensaje_escriptado<< std::endl;   
     
     
-     std::cout<<endl<<"INICIANDO DESECRIPTACION  mensaje recibodo: " << mensaje_escriptado<< std::endl;
+     std::cout<<endl<<"INICIANDO DESECRIPTACION  mensaje recibodo: " << mensaje_escriptado<< std::endl;*/
     Receptor b;
-    b.setMensaje(mensaje_escriptado);
-    b.setClave(a.clave_a, a.clave_b);
+    b.setMensaje("i");
+    b.setClave(5, 1);
     string mensaje_desencriptado = b.Decifrar_dos();
 
 
